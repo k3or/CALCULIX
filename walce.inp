@@ -1,0 +1,36 @@
+** written by FreeCAD inp file writer for CalculiX, Abaqus meshes
+** highest dimension mesh elements only.
+
+** Nodes
+*Node, NSET=Nall
+1, 1500, 0, 0
+2, 1500, 0, 3000
+3, 500, 0, 0
+4, 500, 0, 3000
+** Additional nodes can go here...
+
+** Elements
+*Element, TYPE=C3D10, ELSET=Evolumes
+1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+** Additional elements can go here...
+
+** Material definition
+*MATERIAL, NAME=Steel
+*ELASTIC
+210000, 0.3
+
+** Boundary conditions
+*BOUNDARY
+1, 1, 3, 0  ** Fixing node 1 in X and Z directions
+2, 2, 2, 0  ** Fixing node 2 in Y direction
+
+** Loads (if applicable)
+** Uncomment and add loads here if necessary:
+** *CLOAD
+** 3, 2, -1000
+
+** Step definition
+*STEP
+*STATIC
+1., 1., 1e-05, 1.
+*END STEP
